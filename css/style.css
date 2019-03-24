@@ -11,7 +11,7 @@
 *
 * ======================================================= */
 body {
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
@@ -64,7 +64,6 @@ p {
 
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
-  font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
@@ -103,7 +102,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   line-height: 40px;
-  font-family: "Sacramento", Arial, serif;
+  font-family: serif;
 }
 .fh5co-nav a {
   padding: 5px 10px;
@@ -296,11 +295,12 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-cover {
-  height: 900px;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   width: 100%;
+  background-position: center;
 }
 .fh5co-cover .overlay {
   z-index: 0;
@@ -317,19 +317,19 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover {
-    height: 600px;
+    height: 100vh;
   }
 }
 .fh5co-cover .display-t,
 .fh5co-cover .display-tc {
-  height: 900px;
+  height: 100vh;
   display: table;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover .display-t,
   .fh5co-cover .display-tc {
-    height: 600px;
+    height: 100vh;
   }
 }
 .fh5co-cover.fh5co-cover-sm {
@@ -844,7 +844,7 @@ form label {
   margin-bottom: 0px;
   font-size: 100px;
   line-height: 1.5;
-  font-family: "Sacramento", Arial, serif;
+  font-family: serif;
 }
 @media screen and (max-width: 768px) {
   #fh5co-header .display-tc h1,
@@ -941,33 +941,21 @@ form label {
   /* coutndown blocks */
   display: inline-block;
   width: 100px;
-  height: 100px;
+  padding: 4px 0;
+  /*height: 100px;*/
   background: rgba(241, 78, 149, 0.8);
   margin: 0 4px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
+  border-radius: 4%;
   position: relative;
-  animation: pulse 1s ease infinite;
+  /* animation: pulse 1s ease infinite; */
+  
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 .simply-countdown > .simply-section > div {
   /* countdown block inner div */
   display: table-cell;
   vertical-align: middle;
-  height: 100px;
+  /*height: 100px;*/
   width: 100px;
 }
 
@@ -975,6 +963,7 @@ form label {
 .simply-countdown > .simply-section .simply-word {
   display: block;
   color: white;
+  line-height: normal;
   /* amounts and words */
 }
 
@@ -1065,7 +1054,7 @@ form label {
   }
 }
 .couple-half h3 {
-  font-family: "Sacramento", Arial, serif;
+  font-family: serif;
   color: #F14E95;
   font-size: 30px;
 }
@@ -1182,7 +1171,7 @@ form label {
   line-height: 1.5;
   font-weight: bold;
   color: #F14E95;
-  font-family: "Sacramento", Arial, serif;
+  font-family: serif;
 }
 @media screen and (max-width: 768px) {
   .fh5co-heading h2 {
@@ -1647,7 +1636,7 @@ form label {
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   -webkit-border-radius: 30px;
