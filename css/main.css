@@ -1,0 +1,262 @@
+/*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+body {
+    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+
+.main {
+    padding: 30px 0;
+}
+
+/* ===================
+    ALL: Orange Theme
+   =================== */
+
+.header-container {
+    background-image: url('../img/jk-grey.jpg');
+    background-size: cover;
+    background-position: 50%;
+}
+
+.header-container header {
+    padding: 0 0 3vw;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.footer-container {
+    border-top: 20px solid #e44d26;
+    color: white;
+    background-color: #000;
+}
+
+.title {
+    font-size: 8vw;
+    line-height: normal;
+    margin: 0.4em auto 0.6em;
+}
+
+.subtitle {
+    font-size: 3.5vw;
+}
+
+.directions {
+    background-image: url('../img/map.svg');
+    background-position: 6px 50%;
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    background-color: white;
+    position: relative;
+    display: inline-block;
+    font-family: "Open Sans",Roboto,"Helvetica Neue",Helvetica,Optima,Segoe,"Segoe UI",Candara,Calibri,Arial,sans-serif;
+    font-weight: 600;
+    line-height: 100%;
+    color: #000;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 13px 12px 12px 43px;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased!important;
+    outline-color: rgba(0,78,255,0.5);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    box-shadow: 0 0 0 0.5px rgba(50,50,93,.17), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 1.5px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent!important;
+}
+
+/* ==============
+    MOBILE: Menu
+   ============== */
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0.7em auto;
+}
+
+/* ==============
+    MOBILE: Main
+   ============== */
+
+.main article h1 {
+    font-size: 2em;
+}
+
+.main aside {
+    color: white;
+    padding: 2% 5%;
+    max-width: 200px;
+    background-color: #e44d26;
+    border-radius: 3px;
+    margin: 2em auto;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+}
+
+.main aside div {
+    margin: 0 auto;
+}
+
+.main aside h2 {
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 0.4em;
+    margin-bottom: 0.7em;
+}
+
+.main aside h3, .main aside p {
+    display: inline;
+    line-height: 200%;
+}
+
+.footer-container footer {
+    color: white;
+    padding: 20px 0;
+}
+
+/* ===============
+    ALL: IE Fixes
+   =============== */
+
+.ie7 .title {
+    padding-top: 20px;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 768px) {
+    /* ====================
+    WIDE: CSS3 Effects
+   ==================== */
+    nav ul li {
+        margin: 0 0.7em;
+        display: inline;
+    }
+    /* ============
+    WIDE: Main
+   ============ */
+    .main article {
+        float: left;
+        width: 57%;
+    }
+    .main aside {
+        float: right;
+        width: 28%;
+        text-align: left;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    /* ===============
+    Maximal Width
+   =============== */
+    .wrapper {
+        width: 1026px;
+        /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
