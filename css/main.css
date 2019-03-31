@@ -39,12 +39,8 @@ textarea {
     resize: vertical;
 }
 
-/* ===== Initializr Styles ==================================================
-   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
-   ========================================================================== */
-
 body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+    font: 16px/26px Helvetica, Helvetica Neue, Arial, sans-serif;
 }
 
 .wrapper {
@@ -56,10 +52,6 @@ body {
     padding: 30px 0;
 }
 
-/* ===================
-    ALL: Orange Theme
-   =================== */
-
 .header-container {
     background-image: url('../img/jk-grey.jpg');
     background-size: cover;
@@ -68,10 +60,10 @@ body {
 
 .header-container header {
     padding: 0 0 3vw;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     text-align: center;
     color: white;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .footer-container {
@@ -81,42 +73,97 @@ body {
 }
 
 .title {
-    font-size: 8vw;
-    line-height: normal;
-    margin: 0.4em auto 0.6em;
+    font-size: 11vw;
+    line-height: 0;
+    margin: 1.5em auto 1em;
 }
 
 .subtitle {
-    font-size: 3.5vw;
+    font-size: 6vw;
 }
 
-.directions {
-    background-image: url('../img/map.svg');
-    background-position: 6px 50%;
-    background-size: auto 80%;
+header h3 {
+    width: 50%;
+    margin: 0 auto 1em;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 1em;
+}
+
+.button {
     background-repeat: no-repeat;
     background-color: white;
     position: relative;
     display: inline-block;
-    font-family: "Open Sans",Roboto,"Helvetica Neue",Helvetica,Optima,Segoe,"Segoe UI",Candara,Calibri,Arial,sans-serif;
+    font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
     font-weight: 600;
     line-height: 100%;
     color: #000;
-    font-size: 15px;
     text-decoration: none;
     border: 1px solid transparent;
-    padding: 13px 12px 12px 43px;
     border-radius: 3px;
     cursor: pointer;
     -webkit-font-smoothing: antialiased!important;
-    outline-color: rgba(0,78,255,0.5);
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-    box-shadow: 0 0 0 0.5px rgba(50,50,93,.17), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 1.5px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent!important;
+    outline-color: rgba(0, 78, 255, 0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    box-shadow: 0 0 0 0.5px rgba(50, 50, 93, .17), 0 2px 5px 0 rgba(50, 50, 93, .1), 0 1px 1.5px 0 rgba(0, 0, 0, .07), 0 1px 2px 0 rgba(0, 0, 0, .08), 0 0 0 0 transparent!important;
+}
+
+.button:hover {
+    background-color: #fafafa;
+}
+
+.button.rsvp {
+    background-color: #00951D;
+    color: white;
+}
+
+.button.rsvp:hover {
+    background-color: #008e1c;
+}
+
+nav ul li a, nav ul li .addeventatc, nav ul li .addeventatc:hover {
+    width: 100%;
+    max-width: 14em;
+    box-sizing: border-box;
+    font-size: 1.4em;
+    padding: 0.8em 0;
+}
+
+nav ul li a img, nav ul li .addeventatc img {
+    height: 1.3em;
+    margin-right: 0.3em;
+}
+
+.addeventatc_icon {
+    display: none;
+}
+
+.slideshow {
+    width: 100%;
+    height: 20em;
+    max-height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 3px 0;
+}
+
+.slideshow img {
+    display: inline-block;
+    height: 100%;
+    width: auto;
+    border-radius: 2px;
+    margin-right: 3px;
 }
 
 /* ==============
     MOBILE: Menu
    ============== */
+
+nav {
+    text-align: center;
+    margin: 2em auto;
+}
 
 nav ul {
     margin: 0;
@@ -125,7 +172,8 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0.7em auto;
+    overflow: hidden;
+    padding: 0.5em 0;
 }
 
 /* ==============
@@ -143,7 +191,7 @@ nav ul li {
     background-color: #e44d26;
     border-radius: 3px;
     margin: 2em auto;
-    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
 .main aside div {
@@ -151,7 +199,7 @@ nav ul li {
 }
 
 .main aside h2 {
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     padding-bottom: 0.4em;
     margin-bottom: 0.7em;
 }
@@ -174,25 +222,17 @@ nav ul li {
     padding-top: 20px;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+/* ===============
+    Wider screens
+   =============== */
 
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
+@media (min-width: 600px) {
+    header h3 {
+        margin-bottom: 2em;
+    }
+}
 
 @media only screen and (min-width: 768px) {
-    /* ====================
-    WIDE: CSS3 Effects
-   ==================== */
-    nav ul li {
-        margin: 0 0.7em;
-        display: inline;
-    }
-    /* ============
-    WIDE: Main
-   ============ */
     .main article {
         float: left;
         width: 57%;
@@ -202,12 +242,17 @@ nav ul li {
         width: 28%;
         text-align: left;
     }
+    nav ul li {
+        display: inline-block;
+        padding: 0.5em 0.5em;
+    }
+
+    nav ul li a, nav ul li .addeventatc, nav ul li .addeventatc:hover {
+        padding: 0.8em 1em;
+    }
 }
 
 @media only screen and (min-width: 1140px) {
-    /* ===============
-    Maximal Width
-   =============== */
     .wrapper {
         width: 1026px;
         /* 1140px - 10% for margins */
