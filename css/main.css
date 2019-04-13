@@ -1,3 +1,13 @@
+/* Font */
+@font-face {
+    font-family: 'savucondensed';
+    src: url('../font/savu-condensed.woff2') format('woff2'),
+         url('../font/savu-condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
 html {
@@ -40,7 +50,7 @@ textarea {
 }
 
 body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial, sans-serif;
+    font: 16px/26px 'savucondensed', sans-serif;
 }
 
 .wrapper {
@@ -85,16 +95,17 @@ body {
 header h3 {
     width: 50%;
     margin: 0 auto 1em;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
     padding-top: 1em;
+    font-size: 4.5vw;
 }
 
-.button {
+.button, .addeventatc {
     background-repeat: no-repeat;
     background-color: white;
     position: relative;
     display: inline-block;
-    font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+    font-family: 'savucondensed', sans-serif !important;
     font-weight: 600;
     line-height: 100%;
     color: #000;
@@ -143,6 +154,7 @@ nav ul li a img, nav ul li .addeventatc img {
     height: 20em;
     max-height: 100vh;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
     white-space: nowrap;
     padding: 3px 0;
