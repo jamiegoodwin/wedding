@@ -175,12 +175,16 @@ nav ul li a img, nav ul li .addeventatc img {
     padding: 3px 0;
 }
 
-.slideshow img {
+.slideshow a {
     display: inline-block;
-    height: 100%;
-    width: auto;
     border-radius: 2px;
     margin-right: 3px;
+    height: 100%;
+}
+
+.slideshow a picture, .slideshow a picture img {
+	height: 100%;
+	width: auto;
 }
 
 /* ==============
