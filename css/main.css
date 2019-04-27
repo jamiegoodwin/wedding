@@ -260,38 +260,6 @@ nav ul li {
     padding-top: 20px;
 }
 
-/* ===============
-    Wider screens
-   =============== */
-
-@media only screen and (min-width: 768px) {
-    .main article {
-        float: left;
-        width: 57%;
-    }
-    .main aside {
-        float: right;
-        width: 28%;
-        text-align: left;
-    }
-    nav ul li {
-        display: inline-block;
-        padding: 0.5em 0.5em;
-    }
-
-    nav ul li a, nav ul li .addeventatc, nav ul li .addeventatc:hover {
-        padding: 0.8em 1em;
-    }
-}
-
-@media only screen and (min-width: 1140px) {
-    .wrapper {
-        width: 1026px;
-        /* 1140px - 10% for margins */
-        margin: 0 auto;
-    }
-}
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -348,7 +316,7 @@ nav ul li {
     display:block;
     padding:0.75em 0 0.75em 0.5em;
     overflow: hidden;
-    font-size: 1.6em;
+    font-size: 1.2em;
     text-align: center;
     background-color: rgb(32,68,50);
     color: white;
@@ -410,3 +378,39 @@ nav ul li {
     left:0;
     right:1.34em;
   }
+  
+  /* ===============
+    Wider screens
+   =============== */
+
+@media only screen and (min-width: 768px) {
+    .main article {
+        float: left;
+        width: 57%;
+    }
+    .main aside {
+        float: right;
+        width: 28%;
+        text-align: left;
+    }
+    nav ul li {
+        display: inline-block;
+        padding: 0.5em 0.5em;
+    }
+
+    nav ul li a, nav ul li .addeventatc, nav ul li .addeventatc:hover {
+        padding: 0.8em 1em;
+    }
+    
+       .main article h1.ribbon {
+       		font-size: 1.6em;
+       }
+}
+
+@media only screen and (min-width: 1140px) {
+    .wrapper {
+        width: 1026px;
+        /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
+}
