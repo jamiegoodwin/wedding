@@ -1,10 +1,14 @@
-// mailgun
-let key = "key-3ac9d8ce2b531334c715e3bc22d60713";
-let url = "https://api.eu.mailgun.net/v3";
-let domain = "jamiegoodwin.uk";
-let addtolist = function ($name, $address) {
-	let $fulladdress = encodeURI($name & " <" & $address & ">");
-	return "/list/" & $fulladdress & "/members";
-};
+// RSVP submissions
+let rsvp_form = document.querySelector('form[name="rsvp"]');
 
-console.log(addtolist("Jamie & Kristina", "me@jamiegoodwin.uk"));
+function rsvp_send() {
+	var request = new XMLHttpRequest();
+	request.open('POST', rsvp_form.action, true);
+	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+	request.send(JSON.stringify(new FormData(rsvp_form)));
+}
+
+rsvp_form.onsubmit = function() {
+	rsvp_send();
+	return false;
+};
