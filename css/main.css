@@ -66,6 +66,7 @@ body {
     background-image: url('../img/jk-grey.jpg');
     background-size: cover;
     background-position: 50%;
+    z-index: 2;
 }
 
 .header-container header {
