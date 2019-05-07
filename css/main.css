@@ -107,11 +107,18 @@ form[name="rsvp"] div label {
     margin-bottom: 0.5em;
 }
 
-form[name="rsvp"] div input[type="text"] {
+form[name="rsvp"] div input[type="text"],
+form[name="rsvp"] div textarea {
     width: 100%;
     font-size: 1.2em;
     padding: 0.3em;
     box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+form[name="rsvp"] div textarea {
+    height: 6em;
+    resize: none;
 }
 
 form[name="rsvp"] div input[type="checkbox"] {

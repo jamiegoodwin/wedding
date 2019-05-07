@@ -348,10 +348,12 @@
 
 			<article>
 				<h1 class="ribbon">Wedding gifts</h1>
-				<p>Weddings are (an) expensive (pain in the ass), so we really appreciate you just turning up to ours! 
-					You being there is, honestly, more than enough of a gift. But, if you still want to give us something, 
-					we'd appreciate a contribution to our honeymoon fund (using PayPal). 
-					<br>We're thinking of doing a road trip across the US, or trekking in Patagonia next year, when we've saved up a bit more. </p>
+				<p>Weddings are (an) expensive (pain in the ass), so we really appreciate you just turning up to ours!
+					You being there is, honestly, more than enough of a gift. But, if you still want to give us
+					something,
+					we'd appreciate a contribution to our honeymoon fund (using PayPal).
+					<br>We're thinking of doing a road trip across the US, or trekking in Patagonia next year, when
+					we've saved up a bit more. </p>
 				<p><em>Individual contribution amounts are not shown. You can also contribute anonymously if you
 						prefer.</em></p>
 				<a class="button" href="https://paypal.me/pools/c/8ek80lfjRY" target="_blank">
@@ -361,38 +363,49 @@
 
 			<article id="rsvp">
 				<h1 class="ribbon">RSVP!</h1>
-				<form method="POST" name="rsvp" action="https://evawin.herokuapp.com/">
-					<div>
-						<label for="name">What is, or are, your names?</label>
-						<input name="name" type="text" placeholder="John & Jane" />
-					</div>
-					<div>
-						<label for="email">What's your email address?</label>
-						<input name="email" type="text" placeholder="johnandjane@happycouple.com" />
-					</div>
-					<div>
-						<label for="yurt" class="checkbox">
-							<input type="checkbox" id="yurt" name="yurt" /> I am interested in a yurt.
-						</label>
-					</div>
-					<div>
-						<input class="button rsvp" type="submit" value="Respondez s'il vous plait!" />
-					</div>
-				</form>
+				<div class="rsvp-form-container">
+					<!-- DEVELOPMENT -->
+					<form method="POST" name="rsvp" action="http://localhost:8080/">
+						<!-- PRODUCTION -->
+						<!-- <form method="POST" name="rsvp" action="https://evawin.herokuapp.com/"> -->
+						<div>
+							<label for="name">What is, or are, your names?</label>
+							<input name="name" type="text" placeholder="John & Jane" />
+						</div>
+						<div>
+							<label for="email">What's your email address?</label>
+							<input name="email" type="text" placeholder="johnandjane@happycouple.com" />
+						</div>
+						<div>
+							<label for="info">Additional info:</label>
+							<textarea name="info"
+								placeholder="Anything we should know? Examples:&#13;&#10;'I only eat mice'&#13;&#10;'I snore loudly'"></textarea>
+						</div>
+						<div>
+							<label for="yurt" class="checkbox">
+								<input type="checkbox" id="yurt" name="yurt" /> I am interested in a yurt.
+							</label>
+						</div>
+						<div>
+							<input class="button rsvp" type="submit" value="Respondez s'il vous plait!" />
+						</div>
+					</form>
+				</div>
 				<hr />
-				<p class="warn">Ickle warning...</p> 
+				<p class="warn">Ickle warning...</p>
 				<p>You should receive a confirmation email after you submit. If you don't, panic. Something's gone
 					wrong!</p>
-				<p>When you're done panicking, please email us manually to let us know you're attending and that Jamie
+				<p>When you're done panicking, please email us manually to let us know you're attending and that
+					Jamie
 					sucks at coding:</p>
 				<pre><code>jkevawin@gmail.com</code></pre>
-			</article>
+		</article>
 		</div> <!-- #main -->
 	</div> <!-- #main-container -->
 
 	<div class="footer-container">
 		<footer class="wrapper">
-			<h3>footer</h3>
+			<h7>Not a footer (despite appearances)</h7>
 		</footer>
 	</div>
 </body>
