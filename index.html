@@ -1,413 +1,52 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html>
 
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title></title>
+	<title>Thanks for coming!</title>
 	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width" />
+	<style>
+		body {
+			font-size: 16px;
+			margin: 0.5em;
+		}
 
-	<link rel="stylesheet" href="css/normalize.min.css">
-	<link rel="stylesheet" href="css/main.css">
+		.image-container {
+			column-count: 5;
+			column-width: 300px;
+			column-gap: 8px;
+			font-size: 0;
+		}
 
-	<script defer src="js/vendor/addevent.js"></script>
-	<script defer src="js/main.js"></script>
-
-	<!--[if lt IE 9]>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-        <![endif]-->
+		img {
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+			border-radius: 5px;
+			display: inline-block;
+			margin-bottom: 8px;
+			max-width: 100%;
+			position: relative;
+		}
+	</style>
 </head>
 
 <body>
 
-	<div class="header-container">
-		<header class="clearfix">
-			<h1 class="title">Jamie &amp; Kristina</h1>
-			<h2 class="subtitle">Are getting married!</h2>
-			<img src="img/decoration/arrows.svg" />
-			<h3>10.08.2019</h3>
-		</header>
-	</div>
+	<script>
+		const totalImages = 6
+		let images = ""
+		const imageContainer = document.createElement('div')
+		imageContainer.classList.add('image-container')
 
-	<div class="main-container">
-		<div class="main wrapper clearfix">
-			<nav>
-				<ul>
-					<li>
-						<a class="button rsvp" href="#rsvp">
-							<img src="img/mail.svg" />
-							RSVP</a>
-					</li>
-					<li>
-						<div title="Add to Calendar" class="addeventatc">
-							<img src="img/cal.svg" />
-							Add to Calendar
-							<span class="start">10/08/2019 17:00</span>
-							<span class="end">11/08/2019 12:00</span>
-							<span class="timezone">England/London</span>
-							<span class="title">Jamie & Kristina's Wedding</span>
-							<span class="description">For details on how to get to Barnutopia, bus, taxi and
-								rail services, visit http://barnutopia.com/location/. If you're using a
-								regular sat nav, check the site for instructions.</span>
-							<span class="location">Barnutopia, Tanycoed Farm, Llansilin, Oswestry,
-								Shropshire SY10 9BS</span>
-						</div>
-					</li>
-					<li>
-						<a href="https://goo.gl/maps/JaGwthkJoMs" class="button directions">
-							<img src="img/map.svg" />
-							Get Directions</a>
-					</li>
-				</ul>
-			</nav>
+		for (let i = 1; i <= totalImages; i++) {
+			images += `<img src="img/full/${i}.jpg" />`
+		}
 
-			<article>
-				<header>
-					<h1 class="ribbon">What's happening?</h1>
-					<p><img src="img/decoration/glass.svg"
-							style="max-height: 100px; float: left; margin-left: 10px; transform: rotate(-20deg); margin-right: 25px;" />There'll
-						be music, food, drinking, dancing, games, a new name (the <em>Evawins</em>), probably some rain,
-						and lots of fun!</p>
-					<p>We're not really having a "wedding" wedding. More of a wedding party done in as close to festival
-						style as we can replicate.</p>
-					<h2>Rough plan:</h2>
-					<ul>
-						<li><strong>17:00</strong> - Arrive. Chill. Have a drink.</li>
-						<li><strong>17:30</strong> - We say "I do". Happy tears.</li>
-						<li><strong>18:00</strong> - More chilling. Games. Photos.</li>
-						<li><strong>19:00</strong> - Food. Drinks. Cake.</li>
-						<li><strong>19:30</strong> - Dance, chill etc.</li>
-						<li><strong>Sunset</strong> - Bonfire. Marshmallows.</li>
-						<li><strong>Night-time</strong> - Dancing!</li>
-					</ul>
-				</header>
-			</article>
+		imageContainer.innerHTML = images
 
-			<article>
-				<header>
-					<h1 class="ribbon">Where's it happenin'?</h1>
-					<p>Barnutopia, Tanycoed Farm<br />
-						Llansilin<br />
-						Oswestry<br />
-						Shropshire<br />
-						SY10 9BS</p>
-					<a href="https://barnutopia.com" target="_blank">https://barnutopia.com</a>
-					<p>There's a car park for those camping, and taxi services to take you to the nearby B&amp;Bs.
-						There's also a train station 8 miles away.</p>
-					<a href="https://barnutopia.com/location/" target="_blank">Travel details and taxi services</a>
-					<h2>Photos!</h2>
-					<h3>Scroll right. Click/tap to open.</h3>
-				</header>
-				<div class="slideshow">
-					<a href="img/barnutopia/1.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/1.webp" type="image/webp">
-							<source srcset="img/barnutopia/1.jpg" type="image/jpeg">
-							<img src="img/barnutopia/1.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/2.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/2.webp" type="image/webp">
-							<source srcset="img/barnutopia/2.jpg" type="image/jpeg">
-							<img src="img/barnutopia/2.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/3.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/3.webp" type="image/webp">
-							<source srcset="img/barnutopia/3.jpg" type="image/jpeg">
-							<img src="img/barnutopia/3.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/4.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/4.webp" type="image/webp">
-							<source srcset="img/barnutopia/4.jpg" type="image/jpeg">
-							<img src="img/barnutopia/4.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/5.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/5.webp" type="image/webp">
-							<source srcset="img/barnutopia/5.jpg" type="image/jpeg">
-							<img src="img/barnutopia/5.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/6.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/6.webp" type="image/webp">
-							<source srcset="img/barnutopia/6.jpg" type="image/jpeg">
-							<img src="img/barnutopia/6.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/7.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/7.webp" type="image/webp">
-							<source srcset="img/barnutopia/7.jpg" type="image/jpeg">
-							<img src="img/barnutopia/7.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/8.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/8.webp" type="image/webp">
-							<source srcset="img/barnutopia/8.jpg" type="image/jpeg">
-							<img src="img/barnutopia/8.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/9.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/9.webp" type="image/webp">
-							<source srcset="img/barnutopia/9.jpg" type="image/jpeg">
-							<img src="img/barnutopia/9.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/10.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/10.webp" type="image/webp">
-							<source srcset="img/barnutopia/10.jpg" type="image/jpeg">
-							<img src="img/barnutopia/10.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/11.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/11.webp" type="image/webp">
-							<source srcset="img/barnutopia/11.jpg" type="image/jpeg">
-							<img src="img/barnutopia/11.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/12.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/12.webp" type="image/webp">
-							<source srcset="img/barnutopia/12.jpg" type="image/jpeg">
-							<img src="img/barnutopia/12.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/13.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/13.webp" type="image/webp">
-							<source srcset="img/barnutopia/13.jpg" type="image/jpeg">
-							<img src="img/barnutopia/13.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/14.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/14.webp" type="image/webp">
-							<source srcset="img/barnutopia/14.jpg" type="image/jpeg">
-							<img src="img/barnutopia/14.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/15.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/15.webp" type="image/webp">
-							<source srcset="img/barnutopia/15.jpg" type="image/jpeg">
-							<img src="img/barnutopia/15.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/16.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/16.webp" type="image/webp">
-							<source srcset="img/barnutopia/16.jpg" type="image/jpeg">
-							<img src="img/barnutopia/16.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/17.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/17.webp" type="image/webp">
-							<source srcset="img/barnutopia/17.jpg" type="image/jpeg">
-							<img src="img/barnutopia/17.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/18.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/18.webp" type="image/webp">
-							<source srcset="img/barnutopia/18.jpg" type="image/jpeg">
-							<img src="img/barnutopia/18.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/19.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/19.webp" type="image/webp">
-							<source srcset="img/barnutopia/19.jpg" type="image/jpeg">
-							<img src="img/barnutopia/19.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/20.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/20.webp" type="image/webp">
-							<source srcset="img/barnutopia/20.jpg" type="image/jpeg">
-							<img src="img/barnutopia/20.jpg" />
-						</picture>
-					</a>
-					<a href="img/barnutopia/21.jpg" target="_blank">
-						<picture>
-							<source srcset="img/barnutopia/21.webp" type="image/webp">
-							<source srcset="img/barnutopia/21.jpg" type="image/jpeg">
-							<img src="img/barnutopia/21.jpg" />
-						</picture>
-					</a>
-				</div>
-				<p>It's a converted barn in Oswestry, complete with yurts, bunkhouses, toilets, showers, a kitchen, and
-					pigs and piglets 🐷 🐖 🐽.</p>
-			</article>
-
-			<article>
-				<header>
-					<h1 class="ribbon">What should I wear?</h1>
-					<p>It's a farm, in August. It might rain but it should be warm. We want you to think of it as a
-						festival. <strong>Bring a waterproof, just in case.</strong></p>
-					<p>Gentlemen: if you want to wear a shirt, that's cool. Thin jumper and t-shirt? Go for it. Perhaps
-						with nice jeans or cords.</p>
-					<h3>The groom's wearing:</h3>
-					<ul>
-						<li>Suit trousers</li>
-						<li>A shirt (rolled up sleeves)</li>
-						<li>A waistcoat</li>
-						<li><em>Possibly a bow or tie for the ceremony</em></li>
-					</ul>
-					<p>Something like these:</p>
-					<div class="slideshow">
-						<a href="img/waistcoat-1.jpg" target="_blank">
-							<picture>
-								<source srcset="img/waistcoat-1.webp" type="image/webp">
-								<source srcset="img/waistcoat-1.jpg" type="image/jpeg">
-								<img src="img/waistcoat-1.jpg" />
-							</picture>
-						</a>
-						<a href="img/waistcoat-2.webp" target="_blank">
-							<picture>
-								<source srcset="img/waistcoat-2.webp" type="image/webp">
-								<source srcset="img/waistcoat-2.jpg" type="image/jpeg">
-								<img src="img/waistcoat-2.jpg" />
-							</picture>
-						</a>
-					</div>
-					<p>Ladies: whip out that gorgeous summer dress. Don those nice trousers and blouse. Whatever you
-						feel comfortable in.</p>
-					<h3>The bride's wearing...well, you know.</h3>
-					<div class="slideshow">
-						<a href="img/dress-1.jpg" target="_blank">
-							<picture>
-								<source srcset="img/dress-1.webp" type="image/webp">
-								<source srcset="img/dress-1.jpg" type="image/jpeg">
-								<img src="img/dress-1.jpg" />
-							</picture>
-						</a>
-						<a href="img/dress-2.jpg" target="_blank">
-							<picture>
-								<source srcset="img/dress-2.webp" type="image/webp">
-								<source srcset="img/dress-2.jpg" type="image/jpeg">
-								<img src="img/dress-2.jpg" />
-							</picture>
-						</a>
-					</div>
-				</header>
-			</article>
-
-			<article>
-				<h1 class="ribbon">Where can I stay?</h1>
-				<p>You've got a few options:</p>
-
-				<h3>Yurts</h3>
-				<p>We have a few yurts included with the venue that we're happy to offer for &pound;20 per person for
-					the night (&pound;5 cheaper than the nearest B&amp;B).</p>
-				<p>The sleeping arrangements are a bit weird in some though (e.g. sleeps 8) so tell us in your R.S.V.P.
-					if you're interested and we'll see if we can get you into one.</p>
-
-				<h3>Camping</h3>
-				<p>The easiest option is to camp. There's plenty of room on the site for it. There are toilets, showers,
-					and a kitchen.</p>
-				<p><a href="https://barnutopia.com/tent-camping-shropshire/" target="_blank">Full details on camping
-						here</a> (ignore the cost, it's included in our venue hire)</p>
-				<p class="warn">If you're camping, you're welcome to arrive around 16:30 to set up your tent.</p>
-
-				<h3>Nearby B&amp;Bs</h3>
-				<p>If camping's not your thang, there are a few B&amp;B options nearby. The nearest is a
-					17-minute walk away, or you can book a taxi or drive if you're staying off the sauce.</p>
-				<h5>Nearest 3 B&amp;Bs</h5>
-				<ul>
-					<li>
-						<a href="http://thewynnstayinn.weebly.com/" target="_blank">The Wynnstay Inn (1 mile away)</a>
-					</li>
-					<li>
-						<a href="https://www.restonthehill.co.uk/" target="_blank">The Rest on the Hill (2 miles)</a>
-					</li>
-					<li>
-						<a href="https://www.moorehousefarm.co.uk/accommodation/" target="_blank">Moorehouse Farm (2
-							miles)</a>
-					</li>
-					<li>
-						<a href="https://barnutopia.com/business-directory/bed-breakfast-self-catering-guesthouses-near-barnutopia/"
-							target="_blank">More
-							on Barnutopia's website</a>
-					</li>
-				</ul>
-			</article>
-
-			<article>
-				<h1 class="ribbon">Wedding gifts</h1>
-				<p>Weddings are (an) expensive (pain in the ass), so we really appreciate you just turning up to ours!
-					You being there is, honestly, more than enough of a gift. But, if you still want to give us
-					something,
-					we'd appreciate a contribution to our honeymoon fund (using PayPal).
-					<br>We're thinking of doing a road trip across the US, or trekking in Patagonia next year, when
-					we've saved up a bit more. </p>
-				<p><em>Individual contribution amounts are not shown. You can also contribute anonymously if you
-						prefer.</em></p>
-				<a class="button" href="https://paypal.me/pools/c/8ek80lfjRY" target="_blank">
-					<img src="img/paypal-icon.svg" />
-					Contribute here</a>
-			</article>
-
-			<article id="rsvp">
-				<h1 class="ribbon">RSVP!</h1>
-				<div class="rsvp-form-container">
-					<!-- DEVELOPMENT -->
-					<!-- <form method="POST" name="rsvp" action="http://localhost:8080/"> -->
-					<!-- PRODUCTION -->
-					<form method="POST" name="rsvp" action="https://evawin.herokuapp.com/">
-						<div>
-							<label for="name">What is, or are, your names?</label>
-							<input name="name" type="text" placeholder="John & Jane" />
-						</div>
-						<div>
-							<label for="email">What's your email address?</label>
-							<input name="email" type="text" placeholder="johnandjane@happycouple.com" />
-						</div>
-						<div>
-							<label for="info">Additional info:</label>
-							<textarea name="info"
-								placeholder="Anything we should know? Examples:&#13;&#10;'I only eat mice'&#13;&#10;'I snore loudly'"></textarea>
-						</div>
-						<div>
-							<label for="yurt" class="checkbox">
-								<input type="checkbox" id="yurt" name="yurt" /> I am interested in a yurt.
-							</label>
-						</div>
-						<div>
-							<input class="button rsvp" type="submit" value="Respondez s'il vous plait!" />
-						</div>
-					</form>
-				</div>
-				<hr />
-				<p class="warn">Ickle warning...</p>
-				<p>You should receive a confirmation email after you submit. If you don't, panic. Something's gone
-					wrong!</p>
-				<p>When you're done panicking, please email us manually to let us know you're attending and that
-					Jamie
-					sucks at coding:</p>
-				<pre><code>jkevawin@gmail.com</code></pre>
-		</article>
-		</div> <!-- #main -->
-	</div> <!-- #main-container -->
-
-	<div class="footer-container">
-		<footer class="wrapper">
-			<h7>Not a footer (despite appearances)</h7>
-		</footer>
-	</div>
+		document.body.appendChild(imageContainer)
+	</script>
 </body>
 
 </html>
