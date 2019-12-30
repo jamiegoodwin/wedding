@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Thanks for coming!</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      body {
+        font-size: 16px;
+        margin: 0.5em;
+      }
+
+      .image-container {
+        column-width: 300px;
+        column-gap: 8px;
+        font-size: 0;
+      }
+
+      .image-container a {
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 8px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="image-container">
+      {{the_content}}
+    </div>
+  </body>
+</html>
