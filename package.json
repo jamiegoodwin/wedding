@@ -1,0 +1,25 @@
+{
+  "name": "evawin-wedding",
+  "version": "1.0.0",
+  "description": "Jamie and Kristina's wedding website.",
+  "main": "resize.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jevawin/wedding.git"
+  },
+  "author": "Jamie Evawin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jevawin/wedding/issues"
+  },
+  "homepage": "https://github.com/jevawin/wedding#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "html-minifier": "^4.0.0",
+    "rimraf": "^3.0.0",
+    "sharp": "^0.23.4"
+  }
+}
