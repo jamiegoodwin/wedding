@@ -1,52 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Thanks for coming!</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      body {
+        font-size: 16px;
+        margin: 0.5em;
+      }
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Thanks for coming!</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width" />
-	<style>
-		body {
-			font-size: 16px;
-			margin: 0.5em;
-		}
+      .image-container {
+        column-count: 5;
+        column-width: 300px;
+        column-gap: 8px;
+        font-size: 0;
+      }
 
-		.image-container {
-			column-count: 5;
-			column-width: 300px;
-			column-gap: 8px;
-			font-size: 0;
-		}
+      .image-container a {
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 8px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+      }
 
-		img {
-			box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-			border-radius: 5px;
-			display: inline-block;
-			margin-bottom: 8px;
-			max-width: 100%;
-			position: relative;
-		}
-	</style>
-</head>
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <script src="img/processed_files.js"></script>
+    <script>
+      const imageContainer = document.createElement("div");
+      imageContainer.classList.add("image-container");
 
-	<script>
-		const totalImages = 6
-		let images = ""
-		const imageContainer = document.createElement('div')
-		imageContainer.classList.add('image-container')
+      imageContainer.innerHTML = images_html;
 
-		for (let i = 1; i <= totalImages; i++) {
-			images += `<img src="img/full/${i}.jpg" />`
-		}
-
-		imageContainer.innerHTML = images
-
-		document.body.appendChild(imageContainer)
-	</script>
-</body>
-
+      document.body.appendChild(imageContainer);
+    </script>
+  </body>
 </html>
