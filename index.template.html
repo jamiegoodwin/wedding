@@ -3,12 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <title>Thanks for coming!</title>
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Thanks for coming to our wedding 😊 we hope you have a wonderful time. We've posted a bunch of photos below. Download any you like by tapping/clicking on them."
+    />
     <meta name="viewport" content="width=device-width" />
     <style>
       body {
+        background-color: #333;
+        font-family: sans-serif;
         font-size: 16px;
         margin: 0.5em;
+        text-align: center;
       }
 
       .image-container {
@@ -27,13 +33,65 @@
         text-decoration: none;
       }
 
+      picture,
       img {
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         max-width: 100%;
+      }
+
+      .header {
+        color: white;
+        font-size: 4.5vw;
+        margin-bottom: 8px;
+        position: relative;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .header a {
+        overflow: hidden;
+      }
+
+      .header picture,
+      .header img {
+        display: block;
+        border-radius: 5px;
+        width: 100%;
+        overflow: hidden;
       }
     </style>
   </head>
 
   <body>
+    <div class="header">
+      <div class="overlay">
+        <h1>Thanks for coming!</h1>
+        <p>
+          We had such an awesome time and we hope you did too. Here are the
+          piccies. If you love any, click or tap it to download.
+        </p>
+      </div>
+      <a href="img/group.jpg" target="_blank">
+        <picture>
+          <source type="image/webp" srcset="img/group-420.webp" />
+          <source
+            type="image/webp"
+            media="(min-width: 421px)"
+            srcset="img/group-768.webp"
+          />
+          <source
+            type="image/webp"
+            media="(min-width: 769px)"
+            srcset="img/group-1024.webp"
+          />
+          <source
+            type="image/webp"
+            media="(min-width: 1025px)"
+            srcset="img/group.webp"
+          />
+          <img src="img/group.jpg" />
+        </picture>
+      </a>
+    </div>
     <div class="image-container">
       {{the_content}}
     </div>
