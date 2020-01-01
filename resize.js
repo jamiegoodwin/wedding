@@ -5,8 +5,19 @@ const minify = require("html-minifier").minify;
 const base = "./img";
 const template = "index.template.html";
 const sizes = [420, 840];
+const skip_images = process.argv.includes("--skip-images");
 let processed_count = 0;
 let images_html = "";
+
+if (!skip_images) {
+  sizes.forEach(size => {
+    rimraf(`${base}/${size}/*`, err => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  });
+}
 
 fs.readdir(`${base}/full`, (err, files) => {
   if (err) {
@@ -20,13 +31,30 @@ fs.readdir(`${base}/full`, (err, files) => {
       let sources_html = "";
 
       sizes.forEach(size => {
-        rimraf(`${base}/${size}/*`, () => {
-          resize(file, size);
-        });
+        if (!skip_images) {
+          setTimeout(() => {
+            resize(file, size);
+          }, 2000);
+        }
 
-        prev_size++;
+        sources_html += build_sources_html(++prev_size, size, file);
 
-        sources_html += `
+        prev_size = size;
+      });
+
+      processed_count++;
+
+      output_html(file, sources_html, sizes);
+
+      if (processed_count === total_files) {
+        save_processed_files();
+      }
+    });
+  }
+});
+
+const build_sources_html = (prev_size, size, file) => {
+  return `
           <source
             type="image/webp"
             media="(min-width: ${prev_size})"
@@ -36,12 +64,11 @@ fs.readdir(`${base}/full`, (err, files) => {
             media="(min-width: ${prev_size})"
             srcset="img/${size}/${file}.jpg">                      
         `;
+};
 
-        prev_size = size;
-      });
-
-      // Output HTML for files
-      images_html += `<a
+const output_html = (file, sources_html, sizes) => {
+  // Output HTML for files
+  images_html += `<a
                     href="img/full/${file}.jpg"
                     target="_blank">
                     <picture>
@@ -49,15 +76,7 @@ fs.readdir(`${base}/full`, (err, files) => {
                       <img src="img/${sizes[sizes.length - 1]}/${file}.jpg">
                     </picture>
                   </a>`;
-
-      processed_count++;
-
-      if (processed_count === total_files) {
-        save_processed_files();
-      }
-    });
-  }
-});
+};
 
 const resize = (file, width) => {
   // WebP version
@@ -67,6 +86,8 @@ const resize = (file, width) => {
     .toFile(`./img/${width}/${file}.webp`, (err, info) => {
       if (err) {
         console.log(`Uh oh! Couldn't save output file. ${err}`);
+      } else {
+        console.log(`Saved img/${width}/${file}.webp`);
       }
     });
 
@@ -77,6 +98,8 @@ const resize = (file, width) => {
     .toFile(`./img/${width}/${file}.jpg`, (err, info) => {
       if (err) {
         console.log(`Uh oh! Couldn't save output file. ${err}`);
+      } else {
+        console.log(`Saved img/${width}/${file}.jpg`);
       }
     });
 };
