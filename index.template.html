@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width" />
     <style>
       :root {
-        --background-color: green;
-        --box-shadow-color: gold;
+        --background-color: #1f1f1f;
+        --box-shadow-color: rgba(0, 0, 0, 0.5);
       }
 
       body {
@@ -29,18 +29,31 @@
       }
 
       .image-container a {
-        display: inline-block;
+        display: block;
         margin-bottom: 8px;
-        overflow: hidden;
         position: relative;
         text-decoration: none;
       }
 
       picture,
       img {
-        box-shadow: 0 0 2px var(--box-shadow-color);
+        box-shadow: 1px 1px 2px var(--box-shadow-color);
         max-width: 100%;
         border-radius: 5px;
+      }
+
+      picture {
+        position: relative;
+        display: block;
+      }
+
+      picture img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .header {
@@ -74,28 +87,44 @@
       </div>
       <a href="img/group.jpg" target="_blank">
         <picture>
-          <source type="image/webp" srcset="img/group-420.webp" />
           <source
             type="image/webp"
-            media="(min-width: 421px)"
-            srcset="img/group-768.webp"
+            media="(max-width: 420px)"
+            data-srcset="img/group-420.webp"
+          />
+          <source
+            type="image/jpeg"
+            media="(max-width: 420px)"
+            data-srcset="img/group-420.jpg"
           />
           <source
             type="image/webp"
-            media="(min-width: 769px)"
-            srcset="img/group-1024.webp"
+            media="(max-width: 768px)"
+            data-srcset="img/group-768.webp"
+          />
+          <source
+            type="image/jpeg"
+            media="(max-width: 768px)"
+            data-srcset="img/group-768.jpg"
           />
           <source
             type="image/webp"
-            media="(min-width: 1025px)"
-            srcset="img/group.webp"
+            media="(max-width: 1024px)"
+            data-srcset="img/group-1024.webp"
           />
-          <img src="img/group.jpg" />
+          <source
+            type="image/jpeg"
+            media="(max-width: 1024px)"
+            data-srcset="img/group-1024.jpg"
+          />
+          <source type="image/webp" data-srcset="img/group.webp" />
+          <img class="lazyload" data-src="img/group.jpg" />
         </picture>
       </a>
     </div>
     <div class="image-container">
       {{the_content}}
     </div>
+    <script src="lazysizes.min.js"></script>
   </body>
 </html>

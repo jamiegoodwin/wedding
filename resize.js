@@ -27,7 +27,6 @@ fs.readdir(`${base}/full`, (err, files) => {
     const total_files = files.length;
     files.forEach(file => {
       file = file.replace(".jpg", "");
-      let prev_size = 0;
       let sources_html = "";
 
       sizes.forEach(size => {
@@ -37,50 +36,66 @@ fs.readdir(`${base}/full`, (err, files) => {
           }, 2000);
         }
 
-        sources_html += build_sources_html(++prev_size, size, file);
-
-        prev_size = size;
+        // Add HTML for this size only if not last size
+        if (size !== sizes[sizes.length - 1]) {
+          sources_html += build_sources_html(size, file);
+        }
       });
 
-      processed_count++;
+      // Build <source>s into <a> and <picture> tags for this image
+      sharp(`img/full/${file}.jpg`)
+        .metadata()
+        .then(metadata => {
+          output_html(file, sources_html, sizes, [
+            metadata.width,
+            metadata.height
+          ]);
+        })
+        .catch(err => console.log(err));
 
-      output_html(file, sources_html, sizes);
-
-      if (processed_count === total_files) {
+      // If this is the final file, build index.html
+      if (++processed_count === total_files) {
         save_processed_files();
       }
     });
   }
 });
 
-const build_sources_html = (prev_size, size, file) => {
+const build_sources_html = (size, file) => {
   return `
           <source
             type="image/webp"
-            media="(min-width: ${prev_size})"
-            srcset="img/${size}/${file}.webp">                      
+            media="(max-width: ${size})"
+            data-srcset="img/${size}/${file}.webp">                      
           <source
             type="image/jpeg"
-            media="(min-width: ${prev_size})"
-            srcset="img/${size}/${file}.jpg">                      
+            media="(max-width: ${size})"
+            data-srcset="img/${size}/${file}.jpg">                      
         `;
 };
 
-const output_html = (file, sources_html, sizes) => {
+const output_html = (file, sources_html, sizes, dimensions) => {
+  const aspect = `${(dimensions[1] / dimensions[0]) * 100}%`;
+  const lastSize = sizes[sizes.length - 1];
   // Output HTML for files
   images_html += `<a
                     href="img/full/${file}.jpg"
                     target="_blank">
-                    <picture>
+                    <picture style="padding-top: ${aspect};">
                       ${sources_html}
-                      <img src="img/${sizes[sizes.length - 1]}/${file}.jpg">
+                    <source
+                      type="image/webp"
+                      data-srcset="img/${lastSize}/${file}.webp"> 
+                    <img class="lazyload" data-src="img/${lastSize}/${file}.jpg">
                     </picture>
                   </a>`;
 };
 
 const resize = (file, width) => {
+  const image = sharp(`${base}/full/${file}.jpg`);
+
   // WebP version
-  sharp(`${base}/full/${file}.jpg`)
+  image
     .resize(width)
     .toFormat("webp")
     .toFile(`./img/${width}/${file}.webp`, (err, info) => {
@@ -92,7 +107,7 @@ const resize = (file, width) => {
     });
 
   // JPG backup
-  sharp(`${base}/full/${file}.jpg`)
+  image
     .resize(width)
     .toFormat("jpg")
     .toFile(`./img/${width}/${file}.jpg`, (err, info) => {
