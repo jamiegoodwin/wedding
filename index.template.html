@@ -28,6 +28,11 @@
         font-size: 16px;
         margin: 0.5em;
         text-align: center;
+        scroll-behavior: smooth;
+      }
+
+      body.showLightbox {
+        overflow: hidden;
       }
 
       .header {
@@ -123,10 +128,75 @@
         width: 100%;
       }
 
-      picture,
       img {
         box-shadow: 1px 1px 2px var(--box-shadow-color);
         border-radius: 5px;
+      }
+
+      .lightbox {
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        height: 100%;
+        left: 0;
+        overflow-y: hidden;
+        overflow-x: auto;
+        position: fixed;
+        scroll-snap-type: x mandatory;
+        top: 0;
+        height: 100%;
+        left: 0;
+        overflow-y: hidden;
+        overflow-x: auto;
+        position: fixed;
+        scroll-snap-type: x mandatory;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+      }
+
+      .lightbox:before,
+      .lightbox:after {
+        background-color: rgba(0, 0, 0, 0.75);
+        border-radius: 3px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+        color: white;
+        font-family: sans-serif;
+        opacity: 0.9;
+        position: fixed;
+        padding: 6px 12px;
+      }
+
+      .lightbox:before {
+        content: "X";
+        cursor: pointer;
+        display: block;
+        font-size: 200%;
+        right: 5%;
+        top: 5%;
+      }
+
+      @media (hover: hover) {
+        .lightbox:after {
+          bottom: 5%;
+          display: inline-block;
+          content: "Use  \2190  and  \2192  arrow keys to navigate";
+          font-size: 130%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .showLightbox .lightbox {
+        display: flex;
+      }
+
+      .lightbox img {
+        height: auto;
+        margin-right: 1em;
+        padding-top: 0;
+        scroll-snap-align: center;
+        width: 90vw;
       }
     </style>
   </head>
@@ -191,5 +261,116 @@
       {{the_content}}
     </div>
     <script src="lazysizes.min.js"></script>
+    <script>
+      (function($) {
+        // $ maps to document
+        // images overlay
+        const imageLinks = $.querySelectorAll(
+          ".image-container a[href*='.jpg']"
+        );
+        const images = $.querySelectorAll(
+          ".image-container a[href*='.jpg'] picture"
+        );
+        let lightbox = $.createElement("div");
+        lightbox.classList.add("lightbox");
+
+        images.forEach(image => {
+          // add images to lightbox
+          const newImage = image.cloneNode(true);
+          newImage.style.paddingTop = 0;
+          lightbox.appendChild(newImage);
+
+          // show on image click
+          image.addEventListener(
+            "click",
+            event => {
+              event.preventDefault();
+              const file = event.currentTarget.dataset.file;
+              showHideOverlay(file);
+            },
+            true
+          );
+        });
+
+        // hide lightbox on click
+        lightbox.addEventListener("click", () => showHideOverlay());
+
+        // insert lightbox
+        $.body.appendChild(lightbox);
+
+        const showHideOverlay = file => {
+          const isOpen = $.body.classList.contains("showLightbox");
+
+          if (isOpen) {
+            const scrollPage = entries => {
+              const inView = entries.filter(entry => entry.isIntersecting);
+
+              const selectedImage = $.querySelector(
+                `.image-container [data-file="${inView[0].target.dataset.file}"]`
+              );
+
+              // disable intersection observer
+              observer.disconnect();
+
+              // scroll page to currently viewed image
+              selectedImage.scrollIntoView({ block: "center" });
+
+              // show / hide overlay
+              $.body.classList.toggle("showLightbox");
+            };
+
+            // create observer for lightbox images
+            const observer = new IntersectionObserver(scrollPage, {
+              root: $.querySelector(".lightbox"),
+              rootMargin: "0px",
+              threshold: 1.0
+            });
+
+            // run observer
+            $.querySelectorAll(".lightbox picture").forEach(picture => {
+              // watch for image scroll into view
+              observer.observe(picture);
+            });
+
+            // remove keypress event listener
+            window.removeEventListener("keydown", detectArrow);
+          } else {
+            // show / hide overlay
+            $.body.classList.toggle("showLightbox");
+
+            // scroll lightbox to selected image
+            const selectedImage = $.querySelector(
+              `.lightbox [data-file="${file}"]`
+            );
+
+            selectedImage.scrollIntoView();
+
+            window.addEventListener("keydown", detectArrow);
+          }
+        };
+
+        // left / right arrow navigation
+        const scrollCarousel = left => {
+          const distance = left ? 0 - window.innerWidth : 0 + window.innerWidth;
+
+          document.querySelector(".lightbox").scrollBy({
+            left: distance,
+            behavior: "smooth"
+          });
+        };
+
+        // detect arrow function
+        const detectArrow = event => {
+          // 37 = left, 39 = right
+          const code = event.keyCode;
+
+          if (code === 37) {
+            scrollCarousel(true);
+          } else if (code === 39) {
+            scrollCarousel(false);
+          }
+        };
+      })(document);
+    </script>
   </body>
 </html>

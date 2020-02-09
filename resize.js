@@ -81,7 +81,7 @@ const output_html = (file, sources_html, sizes, dimensions) => {
   images_html += `<a
                     href="img/full/${file}.jpg"
                     target="_blank">
-                    <picture style="padding-top: ${aspect};">
+                    <picture data-file="${file.toLowerCase()}" style="padding-top: ${aspect};">
                       ${sources_html}
                     <source
                       type="image/webp"
