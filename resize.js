@@ -17,9 +17,14 @@ if (!skip_images) {
       }
     });
   });
+  rimraf(`${base}/full/*`, err => {
+    if (err) {
+      console.log(err);
+    }
+  });
 }
 
-fs.readdir(`${base}/full`, (err, files) => {
+fs.readdir(`${base}/original`, (err, files) => {
   if (err) {
     console.log;
     `Couldn't read image files. ${err}`;
@@ -30,20 +35,23 @@ fs.readdir(`${base}/full`, (err, files) => {
       let sources_html = "";
 
       sizes.forEach(size => {
+        // resize images
         if (!skip_images) {
           setTimeout(() => {
             resize(file, size);
+          }, 1000);
+
+          setTimeout(() => {
+            fullSize(file);
           }, 2000);
         }
 
-        // Add HTML for this size only if not last size
-        if (size !== sizes[sizes.length - 1]) {
-          sources_html += build_sources_html(size, file);
-        }
+        // add HTML for this size
+        sources_html += build_sources_html(size, file);
       });
 
-      // Build <source>s into <a> and <picture> tags for this image
-      sharp(`img/full/${file}.jpg`)
+      // build <source>s into <a> and <picture> tags for this image
+      sharp(`img/original/${file}.jpg`)
         .metadata()
         .then(metadata => {
           output_html(file, sources_html, sizes, [
@@ -53,7 +61,7 @@ fs.readdir(`${base}/full`, (err, files) => {
         })
         .catch(err => console.log(err));
 
-      // If this is the final file, build index.html
+      // if this is the final file, build index.html
       if (++processed_count === total_files) {
         save_processed_files();
       }
@@ -65,11 +73,11 @@ const build_sources_html = (size, file) => {
   return `
           <source
             type="image/webp"
-            media="(max-width: ${size})"
+            media="(max-width: ${size}px)"
             data-srcset="img/${size}/${file}.webp">                      
           <source
             type="image/jpeg"
-            media="(max-width: ${size})"
+            media="(max-width: ${size}px)"
             data-srcset="img/${size}/${file}.jpg">                      
         `;
 };
@@ -77,24 +85,24 @@ const build_sources_html = (size, file) => {
 const output_html = (file, sources_html, sizes, dimensions) => {
   const aspect = `${(dimensions[1] / dimensions[0]) * 100}%`;
   const lastSize = sizes[sizes.length - 1];
-  // Output HTML for files
+  // output HTML for files
   images_html += `<a
                     href="img/full/${file}.jpg"
                     target="_blank">
                     <picture data-file="${file.toLowerCase()}" style="padding-top: ${aspect};">
                       ${sources_html}
-                    <source
-                      type="image/webp"
-                      data-srcset="img/${lastSize}/${file}.webp"> 
-                    <img class="lazyload" data-src="img/${lastSize}/${file}.jpg">
+                      <source
+                        type="image/webp"
+                        data-srcset="img/full/${file}.webp"> 
+                      <img class="lazyload" data-src="img/full/${file}.jpg">
                     </picture>
                   </a>`;
 };
 
 const resize = (file, width) => {
-  const image = sharp(`${base}/full/${file}.jpg`);
+  const image = sharp(`${base}/original/${file}.jpg`);
 
-  // WebP version
+  // webp version
   image
     .resize(width)
     .toFormat("webp")
@@ -106,7 +114,7 @@ const resize = (file, width) => {
       }
     });
 
-  // JPG backup
+  // jpg backup
   image
     .resize(width)
     .toFormat("jpg")
@@ -117,6 +125,28 @@ const resize = (file, width) => {
         console.log(`Saved img/${width}/${file}.jpg`);
       }
     });
+};
+
+const fullSize = file => {
+  const image = sharp(`${base}/original/${file}.jpg`);
+
+  // webp version
+  image.toFormat("webp").toFile(`./img/full/${file}.webp`, (err, info) => {
+    if (err) {
+      console.log(`Uh oh! Couldn't save output file. ${err}`);
+    } else {
+      console.log(`Saved img/full/${file}.webp`);
+    }
+  });
+
+  // jpg backup
+  image.toFormat("jpg").toFile(`./img/full/${file}.jpg`, (err, info) => {
+    if (err) {
+      console.log(`Uh oh! Couldn't save output file. ${err}`);
+    } else {
+      console.log(`Saved img/full/${file}.jpg`);
+    }
+  });
 };
 
 const save_processed_files = () => {
