@@ -2,6 +2,7 @@ const fs = require("fs");
 const rimraf = require("rimraf");
 const sharp = require("sharp");
 const minify = require("html-minifier").minify;
+const jsMinify = require("terser").minify;
 const base = "./img";
 const template = "index.template.html";
 const sizes = [420, 840];
@@ -157,6 +158,15 @@ const save_processed_files = () => {
       const html = data.replace("{{the_content}}", images_html);
       const minified = minify(html, {
         minifyCSS: true,
+        minifyJS: (text, inline) => {
+          const res = jsMinify(text, { warnings: true });
+          if (res.warnings) console.log(res.warnings);
+          if (res.error) {
+            console.log(text);
+            throw res.error;
+          }
+          return res.code;
+        },
         html5: true,
         collapseWhitespace: true,
         collapseInlineTagWhitespace: true,
