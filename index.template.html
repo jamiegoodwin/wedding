@@ -22,6 +22,10 @@
         --box-shadow-color: rgba(0, 0, 0, 0.5);
       }
 
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         background-color: var(--background-color);
         font-family: sans-serif;
@@ -151,9 +155,11 @@
       .lightbox:before,
       .lightbox:after {
         background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(255, 255, 255, 0.75);
         border-radius: 3px;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
         color: white;
+        color: black;
         font-family: sans-serif;
         opacity: 0.9;
         position: fixed;
@@ -185,12 +191,13 @@
       }
 
       .lightbox img {
-        height: auto;
+        box-shadow: none;
+        height: 95vh;
         object-fit: contain;
         object-position: 50%;
-        margin-right;: 1em;
+        margin: 0 0.5em;
         scroll-snap-align: center;
-        width: 95%;
+        width: 95vw;
       }
     </style>
   </head>
@@ -306,18 +313,20 @@
               // disable intersection observer
               observer.disconnect();
 
-              // scroll page to currently viewed image
-              selectedImage.scrollIntoView({ block: "center" });
-
               // show / hide overlay
               $.body.classList.toggle("showLightbox");
+
+              // scroll page to currently viewed image
+              selectedImage.scrollIntoView({
+                block: "center",
+                inline: "center"
+              });
             };
 
             // create observer for lightbox images
             const observer = new IntersectionObserver(scrollPage, {
               root: $.querySelector(".lightbox"),
-              rootMargin: "0px",
-              threshold: 1.0
+              threshold: 0.75
             });
 
             // run observer
@@ -345,7 +354,10 @@
 
         // left / right arrow navigation
         const scrollCarousel = left => {
-          const distance = left ? 0 - window.innerWidth : 0 + window.innerWidth;
+          let distance = window.innerWidth;
+          distance = distance * 0.95;
+          distance = distance + 16;
+          distance = left ? 0 - distance : 0 + distance;
 
           document.querySelector(".lightbox").scrollBy({
             left: distance,
